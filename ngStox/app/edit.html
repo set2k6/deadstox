@@ -1,0 +1,51 @@
+<h1>{{ title }}</h1>
+<div>
+    <article class="editInventory">
+        <!-- <p><label>Song Name<input type="text" id="songIn" name="" value=""></label></p>
+        <p><label>Artist<input type="text" id="artistIn" name="" value=""></label></p>
+        <p><label>Album<input type="text" id="albumIn" name="" value=""></label></p>
+
+        <button id="addMyMusic" type="submit">Add</button> -->
+
+        <!-- ARTIST -->
+        <!-- <div class="editDiv">
+            Artist:<br>
+            <input name="artist" type="text" ng-model="newArtist" class="upperEditInput">
+            <button ng-click="createArtist(newArtist)" class="editButton">Create Artist</button>
+        </div><br>
+ -->
+
+        <!-- Closets -->
+        <div class="editDiv">
+            Closets:<!-- <br> -->
+            <input name="closets" type="text" ng-model="newCloset" class="editInput" placeholder="closet name">
+            <!-- Existing Sneakers:
+            <select ng-model="selectedSneaker">
+                <option ng-repeat="sneaker in sneakersList" value="{{sneaker.url}}">{{sneaker.name}}</option>
+            </select> -->
+            <button ng-click="createCloset(newCloset)" class="editButton">Create Closet</button>
+        </div><br>
+
+
+        <!-- Sneakers -->
+        <div class="editDiv">
+            Sneakers:<!-- <br> -->
+            <input name="sneakers" type="text" ng-model="selectedSneaker.name" class="upperEditInput" placeholder="name">
+            <input name="sneakers" type="select" ng-model="selectedSneaker.brand" class="upperEditInput" placeholder="brand">
+            <input name="sneakers" type="text" ng-model="selectedSneaker.release_date" class="upperEditInput" placeholder="release_date">
+            <input name="sneakers" type="text" ng-model="selectedSneaker.purchase_date" class="upperEditInput" placeholder="purchase_date">
+            <input name="sneakers" type="text" ng-model="selectedSneaker.retail_price" class="upperEditInput" placeholder="retail_price">
+            <input name="sneakers" type="text" ng-model="selectedSneaker.resale_value" class="upperEditInput" placeholder="resale_value">
+            Existing Closet:
+            <select ng-model="selectedCloset">
+                <option ng-repeat="closet in closetList.results" value="{{closet.name}}">{{closet.name}}</option>
+            </select>
+            <button ng-click="createSneaker(selectedSneaker, selectedCloset)" class="editButton">Create Sneaker</button>
+        </div><br>
+
+
+
+
+
+    </article>
+</div>

@@ -1,0 +1,18 @@
+.navbar-fixed-top {
+    background-color: #54428E;
+}
+
+.nav-text {
+    color: #E8EEF2;
+    text-align: center;
+}
+
+.navbut {
+    display: inline;
+    float: right;
+}
+
+.table {
+    background-color: #E8EEF2;
+    border: solid 2px #EE6C4D;
+}
