@@ -14,9 +14,7 @@ BRAND_CHOICES = (
 class Closets(models.Model):
     name = models.CharField(max_length=48)
     user = models.ForeignKey('auth.User', related_name='closets', null=True)
-    total_retail_value = models.CharField(max_length=48)
-    total_resale_value = models.CharField(max_length=48)
-    total_profit = models.CharField(max_length=48)
+
 
     def __str__(self):
         return self.name
@@ -28,8 +26,8 @@ class Sneakers(models.Model):
     # highlighted = models.TextField()
     images = models.ImageField(null=True)
     brand = models.CharField(max_length=15, choices=BRAND_CHOICES, default='Nike')
-    release_date = models.DateTimeField()
-    purchase_date = models.DateTimeField('date purchased')
+    release_date = models.CharField(max_length=15)
+    purchase_date = models.CharField(max_length=15)
     retail_price = models.CharField(max_length=15)
     resale_value = models.CharField(max_length=15)
 

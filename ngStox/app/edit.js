@@ -18,30 +18,46 @@ angular.module("NgStox")
         // )
     ).then($timeout())
 
-    $scope.createSneaker = function(selectedSneaker, selectedCloset) {
+    $scope.createSneaker = function(selectedSneaker) {
         // console.log("In submit")
         // console.log("selectedAlbum = ", selectedAlbum)
-        console.log("selectedCloset = ", selectedCloset)
-        result = {"name": "${selectedSneaker}","Closets": ["${selectedCloset}"]}
+        // console.log("selectedCloset = ", selectedCloset)
+        console.log("selectedSneaker = ", selectedSneaker)
+        result = {"name": `${selectedSneaker.name}`,
+                  "closet": `${selectedSneaker.closet}`,
+                  "brand": `${selectedSneaker.brand}`,
+                  "images": null,
+                  "release_date": `${selectedSneaker.release_date}`,
+                  "purchase_date": `${selectedSneaker.purchase_date}`,
+                  "retail_price": `${selectedSneaker.retail_price}`,
+                  "resale_value": `${selectedSneaker.resale_value}`}
+
+            // "name": null,
+            // "closet": "http://localhost:8000/deadstox/closets/1/",
+            // "images": "http://localhost:8000/deadstox/sneakers/classnotes3.jpg",
+            // "brand": "Nike",
+            // "release_date": "2016-09-24T06:00:00Z",
+            // "purchase_date": "2016-09-24T12:00:00Z",
+            // "retail_price": "$120.00",
+            // "resale_value": "$1,000.00"
+
         NewItemFactory.postNewSneaker(result)
     }
 
 
-    // $scope.createArtist = function(selectedArtist) {
-    //     // console.log("In submit")
-    //     // console.log("selectedAlbum = ", selectedAlbum)
-    //     result = `{"name": "${selectedArtist}"}`
-    //     NewItemFactory.postNewArtist(result)
-    // }
-
-
     $scope.createCloset = function(selectedCloset) {
         // console.log("In submit")
-        console.log("selectedSneaker = ", selectedSneaker)
-        result = `{"name": "${selectedCloset}"}`
+        console.log("selectedCloset = ", selectedCloset)
+        result = {"name": `${selectedCloset.name}`,
+                  "sneakers": null,
+                 }
         NewItemFactory.postNewCloset(result)
     }
 
+            // "name": "The Kloset",
+            // "total_retail_value": "$6,435.98",
+            // "total_resale_value": "$8,726.37",
+            // "total_profit": "$2,290.39",
 
     const edit = this;
 
@@ -56,7 +72,7 @@ angular.module("NgStox")
     RootFactory.getRoot()
       .then((root) => {
         edit.root = root;
-        return $http.get(`${edit.root.sneakers}${sneakersId}`);
+        return $http.get(`${edit.root.sneakers}`);
       }, errorHandle)
       .then((sneakerdetail) => {
         edit.sneakerdetail = sneakerdetail.data;

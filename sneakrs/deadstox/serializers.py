@@ -11,8 +11,8 @@ class SneakersSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ClosetsSerializer(serializers.HyperlinkedModelSerializer):
-    sneakers = SneakersSerializer(many=True)
+    sneakers = SneakersSerializer(many=True, read_only=True)
 
     class Meta:
         model = Closets
-        fields = ('id', 'url', 'name', 'total_retail_value', 'total_resale_value', 'total_profit', 'sneakers')
+        fields = ('id', 'url', 'name', 'sneakers')
