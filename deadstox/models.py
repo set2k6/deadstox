@@ -24,7 +24,7 @@ class Sneakers(models.Model):
     closet = models.ForeignKey(Closets, on_delete=models.CASCADE, related_name='sneakers')
     owner = models.ForeignKey('auth.User', related_name='sneakers', null=True)
     # highlighted = models.TextField()
-    images = models.ImageField(null=True)
+    images = models.CharField(max_length=250, blank=True, null=True, default=None)
     brand = models.CharField(max_length=15, choices=BRAND_CHOICES, default='Nike')
     release_date = models.CharField(max_length=15)
     purchase_date = models.CharField(max_length=15)
