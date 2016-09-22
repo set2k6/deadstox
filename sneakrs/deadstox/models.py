@@ -28,8 +28,8 @@ class Sneakers(models.Model):
     brand = models.CharField(max_length=15, choices=BRAND_CHOICES, default='Nike')
     release_date = models.CharField(max_length=15)
     purchase_date = models.CharField(max_length=15)
-    retail_price = models.CharField(max_length=15)
-    resale_value = models.CharField(max_length=15)
+    retail_price = models.DecimalField(max_digits=5, decimal_places=2)
+    resale_value = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
         return self.brand
