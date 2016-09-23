@@ -10,40 +10,33 @@ angular.module("NgStox")
         RootFactory.getClosets().then((closets) => {
             $scope.closetList = closets
             console.log("$scope.closetList = ", $scope.closetList)
-            // })(
-        //         RootFactory.getArtists().then((artists) => {
-        //             $scope.artistList = artists
-        //             console.log("$scope.artistList = ", $scope.artistList)
             })
-        // )
+
     ).then($timeout())
 
     $scope.createSneaker = function(selectedSneaker) {
-        // console.log("In submit")
-        // console.log("selectedAlbum = ", selectedAlbum)
-        // console.log("selectedCloset = ", selectedCloset)
-        console.log("selectedSneaker = ", selectedSneaker)
-        result = {"name": `${selectedSneaker.name}`,
-                  "closet": `${selectedSneaker.closet}`,
-                  "brand": `${selectedSneaker.brand}`,
-                  "images": null,
-                  "release_date": `${selectedSneaker.release_date}`,
-                  "purchase_date": `${selectedSneaker.purchase_date}`,
-                  "retail_price": `${selectedSneaker.retail_price}`,
-                  "resale_value": `${selectedSneaker.resale_value}`}
 
-            // "name": null,
-            // "closet": "http://localhost:8000/deadstox/closets/1/",
-            // "images": "http://localhost:8000/deadstox/sneakers/classnotes3.jpg",
-            // "brand": "Nike",
-            // "release_date": "2016-09-24T06:00:00Z",
-            // "purchase_date": "2016-09-24T12:00:00Z",
-            // "retail_price": "$120.00",
-            // "resale_value": "$1,000.00"
+          const input = document.querySelector('[type="file"]');
+          const image_file = input.files[0];
+          const randomInteger = Math.random() * 1e17;
+          const getFileExtension = image_file.type.split("/").slice(-1)[0];
+          const randomPath = `${randomInteger}.${getFileExtension}`;
 
-        NewItemFactory.postNewSneaker(result)
+      firebase.storage().ref().child(randomPath).put(image_file)
+        .then((res) => {
+        result = {"name": selectedSneaker.name,
+                  "closet": selectedSneaker.closet,
+                  "brand": selectedSneaker.brand,
+                  "release_date": selectedSneaker.release_date,
+                  "purchase_date": selectedSneaker.purchase_date,
+                  "retail_price": selectedSneaker.retail_price,
+                  "resale_value": selectedSneaker.resale_value,
+                  "images": res.downloadURL
+              }
+              console.log("Result!!", result);
+            NewItemFactory.postNewSneaker(result)
+        });
     }
-
 
     $scope.createCloset = function(selectedCloset) {
         // console.log("In submit")
@@ -54,18 +47,11 @@ angular.module("NgStox")
         NewItemFactory.postNewCloset(result)
     }
 
-            // "name": "The Kloset",
-            // "total_retail_value": "$6,435.98",
-            // "total_resale_value": "$8,726.37",
-            // "total_profit": "$2,290.39",
-
     const edit = this;
 
     edit.root = null;
 
     edit.sneakerdetail = null;
-
-
 
     const errorHandle = (e) => console.log(e);
 
@@ -81,7 +67,6 @@ angular.module("NgStox")
       })
       .then(() => {
         return $http.get(`${edit.root.closets}`);
-        // return RootFactory.getAlbums();
       }, errorHandle)
       .then((closets) => {
         console.log("closets", closets.data);
@@ -90,32 +75,11 @@ angular.module("NgStox")
       });
 
 
-
-    edit.change = function () {
-      //update selected song information.
-      return $http.put(`${edit.sneakerdetail.url}`, edit.sneakerdetail)
-        .then(()=> {
-          $scope.$emit("reloadPagePlease");
-        }, errorHandle)
-        // .then(()=> {
-        //   $uibModalInstance.close();
-        // });
-    };
-
-    edit.delete = function () {
-      //deletes selected song.
-      return $http.delete(`${edit.sneakerdetail.url}`)
-      .then(()=> {
-        $scope.$emit("reloadPagePlease");
-      }, errorHandle)
-      // .then(()=> {
-      //   $uibModalInstance.close();
-      // });
-    };
-
-
+    // edit.change = function () {
+    //   //update selected sneaker information.
+    //   return $http.put(`${edit.sneakerdetail.url}`, edit.sneakerdetail)
+    //     .then(()=> {
+    //       $scope.$emit("reloadPage");
+    //     }, errorHandle)
+    // };
   });
-
-
-
-
