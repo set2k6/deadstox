@@ -36,7 +36,6 @@ angular.module("NgStox", ["ngRoute", "ui.bootstrap"])
         return $http.post("http://localhost:8000/deadstox/closets/", closetsInfo)
         .then(
           res => console.log("res = ", res.data)
-          // console.log("res.data = " res.data)
         )
       },
       postNewSneaker: (sneakersInfo) => {
@@ -59,3 +58,20 @@ angular.module("NgStox", ["ngRoute", "ui.bootstrap"])
       $scope.view = true;
 
     }]);
+
+
+  // Initialize Firebase
+  firebase.initializeApp({
+    apiKey: "AIzaSyCgSMq2jJzuLEbtjTYpYPcxTaSkpORxbEU",
+    authDomain: "deadstox-d878a.firebaseapp.com",
+    databaseURL: "https://deadstox-d878a.firebaseio.com",
+    storageBucket: "deadstox-d878a.appspot.com",
+    messagingSenderId: "1051596767459"
+  });
+
+
+
+
+
+
+
