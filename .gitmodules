@@ -1,3 +1,6 @@
 [submodule "sneakrs"]
 	path = sneakrs
 	url = https://github.com/set2k6/sneakrs.git
+[submodule "ngStox"]
+	path = ngStox
+	url = https://github.com/set2k6/ngStox.git
