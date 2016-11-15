@@ -1,0 +1,3 @@
+[submodule "sneakrs"]
+	path = sneakrs
+	url = https://github.com/set2k6/sneakrs.git
