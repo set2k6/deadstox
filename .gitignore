@@ -1,0 +1,5 @@
+.DS_Store
+__pychache__
+bower_components
+**/*.sqlite3
+.python-version
